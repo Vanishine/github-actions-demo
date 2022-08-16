@@ -28,7 +28,11 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: web-artifact
-        path: ./build
+# https://github.com/actions/upload-artifact/issues/174
+# https://github.com/actions/upload-artifact/issues/248
+        path: |
+          build
+          README.md
 
   deploy:
     needs: build
