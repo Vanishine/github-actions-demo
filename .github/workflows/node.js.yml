@@ -30,6 +30,7 @@ jobs:
         name: web-artifact
         path: |
           build
+          .gitignore
 
   deploy:
     needs: build
