@@ -28,7 +28,8 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: web-artifact
-        path: build
+        path: |
+          build
 
   deploy:
     needs: build
