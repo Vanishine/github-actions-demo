@@ -25,3 +25,18 @@ jobs:
     - run: yarn --frozen-lockfile
     - run: yarn build
     - run: yarn test
+    - uses: actions/upload-artifact@v3
+      with:
+        name: build
+        path: build/
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/download-artifact@v3
+      with:
+        name: build
+    - uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: build
